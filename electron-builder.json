@@ -1,0 +1,22 @@
+{
+  "appId": "com.github.ohayowu314.template",
+  "files": [
+    "dist-electron",
+    "dist-react",
+    "public"
+  ],
+  "icon": "public/snake.png",
+  "mac": {
+    "target": "dmg"
+  },
+  "linux": {
+    "target": "AppImage",
+    "category": "Utility"
+  },
+  "win": {
+    "target": [
+      "portable",
+      "msi"
+    ]
+  }
+}
