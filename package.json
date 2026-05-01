@@ -1,0 +1,50 @@
+{
+  "name": "electron-react-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A template for electron with react.",
+  "main": "dist-electron/electron/main.cjs",
+  "homepage": "./",
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:react": "vite",
+    "dev:electron": "npm run transpile:electron && cross-env NODE_ENV=development electron .",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "format": "prettier --write .",
+    "type-check": "tsc -b --noEmit",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "build": "tsc -b && vite build",
+    "transpile:electron": "tsc --project electron/tsconfig.json",
+    "prebuild:electron": "npm run transpile:electron && npm run build",
+    "build:mac": "electron-builder --mac --arm64",
+    "build:win": "electron-builder --win --x64",
+    "build:linux": "electron-builder --linux --x64",
+    "dist:mac": "run-s prebuild:electron build:mac",
+    "dist:win": "run-s prebuild:electron build:win",
+    "dist:linux": "run-s prebuild:electron build:linux"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "cross-env": "^10.1.0",
+    "electron": "~41.2.1",
+    "electron-builder": "^26.8.1",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "npm-run-all2": "^8.0.4",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.10"
+  }
+}
